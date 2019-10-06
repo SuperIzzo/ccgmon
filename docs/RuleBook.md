@@ -9,14 +9,15 @@ Monsters have the following on them:
 * **HP** - or "Hit Points", this is how much damage the monster is able to take before it faints
 * **ATK** - or "base attack", gets added to move attacks when attacking
 * **DEF** - or "base defence", gets added to move defence when defending
-* **Skills** - each monster has a number of skills, these are used when playing moves
-* **Ability** - monsters can have an ability effect
+* **Traits** - each monster has a number of skills, these are used when playing moves
+* **Effect** - monsters can have an ability effect
 
 Move
 ------------------
-* **ATK** - The move's initial attack and/or added attack
-* **DEF** - The move's initial defense and/or added defense
-* **Effect** - One or more side effects that the move has
+* **ATK** - the move's initial and/or added attack
+* **DEF** - the move's initial and/or added defense
+* **Traits** - move traits are cost for playing the move
+* **Effect** - one or more special effects that the move has
 
 ### Types of moves ###
 Moves are generally divided into types based on the timing in which they can be activated.
@@ -61,25 +62,22 @@ Game Board
 ==================
 The game board consists of 5 zones:
 * Deck - is where the deck is placed
-* Discard - is where cards go when used, discarded or destroyed
+* Drop - is where cards go when used, discarded or destroyed
 * Monster - is where the monster card is played
 * Action - is where moves are played from the had or activated into from Stasis
 * Stasis - is where cards with Field or Passive effects go to, during the cleanup
+* Damage - is where cards tracking damage cards go
 
+The action zone is further divided into attack (left) and defense (right).
 
 Gameplay
 ==================
 
-Glosary
+Glossary
 ------------------
-**play** 
-:	is the act of selecting a card in your hand and moveing it into the action zone.
-
-**activate**
-:	is when an effect is initated e.g. due to the actions of players or game mechanics)
-
-**initiate combat**
-:	is when a the turn player plays a move that starts a combat chain.
+**play**:	is the act of selecting a card in your hand and moving it into the action zone.
+**activate**:	is when an effect is initiated e.g. due to the actions of players or game mechanics)
+**initiate combat**:	is when a the turn player plays a move that starts a combat chain.
 
 Setup (single battle)
 ------------------
@@ -110,8 +108,8 @@ During your turn you can play *offensive* moves (ATK is not "~"). In addition yo
 
 During your opponent's turn you can only play *defensive* moves (ATK is not "~") during combat or moves 
 
-### Combat ###
-If a move is played that has an initial **ATK** of at least "1" it must *initiate combat*. You can initiate combat only once per turn. As this happens the opponent's monster is targetted for attack and the offensive move starts a *combat chain*. The opponent then has an opportunity to respond with an initial defensive move. After this you have an opportunity to play an enhancing offsensive move and then the opponent has another opportunity to play a deffensive move. The chain builds this way going back and forth until neither player wants to play any more cards. The defending player can play only a single intial defense, but after that as many enhancing defense moves as they want.
+### Battle ###
+If a move is played that has an initial **ATK** of at least "1" it must *initiate combat*. You can initiate combat only once per turn. As this happens the opponent's monster is targeted for attack and the offensive move starts a *combat chain*. The opponent then has an opportunity to respond with an initial defensive move. After this you have an opportunity to play an enhancing offensive move and then the opponent has another opportunity to play a defensive move. The chain builds this way going back and forth until neither player wants to play any more cards. The defending player can play only a single initial defense, but after that as many enhancing defense moves as they want.
 
 Once the combat chain is built and neither player wishes to activate any more effects, the chain resolves backwards following the chain resolution rules.
 
@@ -125,10 +123,12 @@ Rounded down to a whole number. Where
 
 ``` Final DEF = Base Monster DEF + Initial Move DEF + Enhanced Move DEF ```
 
-If the final damage is 1 or more, the defending monster loses that much HP. If the final damage is 0, but the defending player did not use any defensive moves, the defending monster still takes 1 point of damage (called "direct attack damage").
-And if the opponent's monster's HP hits 0 they lose.
+If the final damage is 1 or more, the defending monster loses that much HP. If the final damage is 0, but the defending player did not use any defensive moves, the defending monster still takes 1 point of damage (called "direct attack damage"). For each point of damage the defender reveals the top card from their deck and places it face-up in the damage zone. When the number of cards in the damage zone becomes equal to the monster's HP that player looses the game.
 
-### Out of Combat ###
+**Attack and defense types**: when declaring an attack the traits of all offensive moves are considered to be the attack types. Likewise all defensive moves are considered to be defensive traits, however if the defending player does not play a defensive move, all monster traits become the defensive types.
+
+
+### Out of Battle ###
 As the turn player you can play non-combat moves. Non-combat moves have **ATK** of 0 and the opponent cannot respond to them with a defensive move. However the move starts a *non-combat chain*, if the opponent has any moves or effects that can trigger at this time and meet all activation requirements they can place them on the chain, and so on until neither player wishes to build the chain any further.
 
 The chain resolves backwards following the chain resolution rules, but note that there is no damage calculation, all move stats from this chain are simply discarded.
@@ -136,7 +136,7 @@ The chain resolves backwards following the chain resolution rules, but note that
 
 Chain Resolution
 ------------------
-Each time a chain is started and built up after players have agreed they don't want to activate effects any further it resolves backwards. Start from the last card that was played. If the card was played from the hand (vertical) its "play" effect is activated (if any), if the card is horizontal its "Field" effect is activated. 
+Each time a chain is started and built up after players have agreed they don't want to activate effects any further it resolves backwards. Start from the last card that was played. If the card was played from the hand (vertical) its "Play" effect is activated (if any), if the card is horizontal its "Field" effect is activated. 
 
 
 
