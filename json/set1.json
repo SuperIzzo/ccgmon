@@ -1,0 +1,121 @@
+{
+  "monsters": [
+    {
+      "name": "Hedgefrost",
+      "type": "monster",
+      "guid": "88495A7A245C469DAF0DEBFAE4BF56C3",
+      "hp": 5,
+      "atk": 5,
+      "def": 5,
+      "traits": [
+        "claws",
+        "thorns",
+        "thorns",
+        "ice",
+        "ice"
+      ]
+    },
+    {
+      "name": "Elguin",
+      "type": "monster",
+      "guid": "C1FAA61C1A5444EABFF2712B25A0BFDD",
+      "hp": 5,
+      "atk": 5,
+      "def": 5,
+      "traits": [
+        "beak",
+        "tail",
+        "thunder",
+        "thunder",
+        "thunder"
+      ]
+    }
+  ],
+  "moves": [
+    {
+      "name": "Slash",
+      "type": "move",
+      "guid": "72DBE23AA21C4465A3D72AD03B0B0B2D",
+      "traits": [
+        "claws"
+      ]
+    },
+    {
+      "name": "Needle Roller",
+      "type": "move",
+      "guid": "B8F9914D82EB4613B6A989ACE028F17C",
+      "traits": [
+        "thorns"
+      ]
+    },
+    {
+      "name": "Peck Barrage",
+      "type": "move",
+      "guid": "DBA367333EE4427285C0751AFE2650CF",
+      "traits": [
+        "beak",
+        "any"
+      ]
+    },
+    {
+      "name": "Ice Shard",
+      "type": "move",
+      "guid": "D665AE7CB3D1417A93DC8C635ABC3E4E",
+      "traits": [
+        "ice"
+      ]
+    },
+    {
+      "name": "Snow Tornado",
+      "type": "move",
+      "guid": "C5D53D1DBC2E4137B22A14321E80CB1F",
+      "traits": [
+        "ice",
+        "ice"
+      ]
+    },
+    {
+      "name": "Static Barrier",
+      "type": "move",
+      "guid": "2DEE2E31992B4426A8A0051F83FC739D",
+      "traits": [
+        "thunder",
+        "thunder"
+      ]
+    },
+    {
+      "name": "Drill Beak",
+      "type": "move",
+      "guid": "D28D13778F904991B17CDA9E580C74FB",
+      "traits": [
+        "beak"
+      ]
+    },
+    {
+      "name": "Zig Zap",
+      "type": "move",
+      "guid": "D2CB9BB240874DD3AEA4C84701693C94",
+      "traits": [
+        "thunder",
+        "any"
+      ]
+    },
+    {
+      "name": "Lightning Bolt",
+      "type": "move",
+      "guid": "077EF314C5714D8CA9889FF8C38310C5",
+      "traits": [
+        "thunder"
+      ]
+    },
+    {
+      "name": "Ice Wall",
+      "type": "move",
+      "guid": "F4ACFBBEA5AB4DA8AD9243B86B8ED9B8",
+      "traits": [
+        "ice",
+        "ice"
+      ]
+    }
+  ]
+}

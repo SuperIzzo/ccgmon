@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  
+  "type": "object",
+  "properties": {
+    
+    "monsters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "guid":   { "type": "string", "pattern": "^[0-9A-F]{32}$" },
+          "name":   { "type": "string" },
+          "type":   { "type": "string", "enum": ["monster"] },
+          "hp":     { "type": "integer", "minimum": 1 },
+          "atk":    { "type": "integer", "minimum": 0 },
+          "def":    { "type": "integer", "minimum": 1 },
+          "traits": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum": 
+              [
+                "water","fire","wind","earth","cloud", "thunder", "sand","plant","ice","lava",
+                "claws","thorns","spike","beak","fangs","wings","tail","shell","scales"
+              ]
+           }
+        },
+        "flavor": { "type": "string" },
+        "effect": {
+          "anyOf": [
+            {"type": "string"},
+            {"type": "array", "items": {"type": "string"} }
+          ]}
+        },
+        "required": ["guid", "name", "type", "hp", "atk", "def", "traits"],
+        "additionalProperties": false
+      }
+    },
+    
+    "moves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "guid":   { "type": "string", "pattern": "^[0-9A-F]{32}$" },
+          "name":   { "type": "string"  },
+          "type":   { "type": "string", "enum": ["move"] },
+          "atk":    { "anyOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "null"   }
+          ]},
+          "def":    { "anyOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "null"   }
+          ]},
+          "e_atk":  { "anyOf": [
+            { "type": "integer"}, 
+            { "type": "null"   }
+          ]},
+          "e_def":  { "anyOf": [
+            { "type": "integer"}, 
+            { "type": "null"   }
+          ]},
+          "traits": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum":
+              [
+                "any",
+                "water","fire","wind","earth","cloud", "thunder", "sand","plant","ice","lava",
+                "claws","thorns","spike","beak","fangs","wings","tail","shell","scales"
+              ]
+            }
+          },
+          "flavor": { "type": "string" },
+          "effect": {
+            "anyOf": [
+              {"type": "string"},
+              {"type": "array", "items": {"type": "string"} }
+          ]}
+        },
+        "required": ["guid", "name", "type", "traits"],
+        "additionalProperties": false
+      }
+    }
+    
+  }
+}
