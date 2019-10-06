@@ -55,11 +55,11 @@
             { "type": "integer", "minimum": 0 },
             { "type": "null"   }
           ]},
-          "e_atk":  { "anyOf": [
+          "eatk":  { "anyOf": [
             { "type": "integer"}, 
             { "type": "null"   }
           ]},
-          "e_def":  { "anyOf": [
+          "edef":  { "anyOf": [
             { "type": "integer"}, 
             { "type": "null"   }
           ]},
