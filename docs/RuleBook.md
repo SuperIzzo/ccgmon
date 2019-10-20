@@ -28,18 +28,15 @@ Moves are generally divided into types based on the timing in which they can be 
 * **special** - special moves have both ATK and DEF marked as "~", their activation conditions are listed in the card text
 
 In addition the stats can be divided into the following types:
-* **initial** - the ATK and/or DEF is just a number, the move can be played by itself and is usually at start of a chain
-* **enhancing** - the ATK and/or DEF is a number with "+" or "-" in front, the move cannot initiate combat or be used on its own, but can be used later in the chain
-* **hybrid** - hybrid stats are both initial and enhancing, they are shown on the card as an initial number and enhancing number in parentheses, and can be used both to initiate and enhance
+* **initial** - the ATK and/or DEF is just a number, you can only play one initial move per attack or defense and it must be played before any additional moves
+* **additional** - the ATK and/or DEF is a number with "+" or "-" in front, the move can be played at any time in the chain
 
 #### Examples ####
 
 * **"```ATK:3 / DEF:~```"**  - - offensive initial move
-* **"```ATK:+1 / DEF:+1```"**   - - dual enhancing move
+* **"```ATK:+1 / DEF:+1```"**   - - dual additional move
 * **"```ATK:~ / DEF:~```"**   - - special move
-* **"```ATK:1(+1) / DEF:2(+2)```"**   - - dual hybrid move
-* **"```ATK:3(+0) / DEF:3(+0)```"**   - - also dual hybrid move
-* **"```ATK:~ / DEF:0(+0)```"**   - - dual defensive move (no added points, presumably just effects)
+* **"```ATK:~ / DEF:+0```"**   - - defensive additional move (no added points, presumably just effects)
 
 
 Types of Effects

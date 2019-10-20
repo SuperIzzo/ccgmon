@@ -79,7 +79,6 @@
       "name": "Snow Tornado",
       "type": "move",
       "guid": "C5D53D1DBC2E4137B22A14321E80CB1F",
-      "atk": 4,
       "eatk": 4,
       "edef": 4,
       "traits": [
@@ -95,8 +94,7 @@
       "name": "Static Barrier",
       "type": "move",
       "guid": "2DEE2E31992B4426A8A0051F83FC739D",
-      "def": 5,
-      "edef": 3,
+      "edef": 4,
       "traits": [
         "thunder",
         "thunder"
@@ -119,7 +117,6 @@
       "name": "Zig Zap",
       "type": "move",
       "guid": "D2CB9BB240874DD3AEA4C84701693C94",
-      "atk": 4,
       "eatk": 3,
       "traits": [
         "thunder",
