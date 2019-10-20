@@ -20,9 +20,11 @@ class Color:
 #=======================================
 class Style:
 	def __init__(self):
-		self.namefont = ImageFont.truetype("arial.ttf", 26)
+		self.namefont = ImageFont.truetype("arial.ttf", 30)
 		self.traitfont = ImageFont.truetype("arial.ttf", 10)
-		self.statsfont = ImageFont.truetype("arial.ttf", 18)
+		self.statsfont = ImageFont.truetype("ariblk.ttf", 30)
+		self.statslabelfont = ImageFont.truetype("arial.ttf", 20)
+		self.modsfont = ImageFont.truetype("arial.ttf", 16)
 		self.effectfont = ImageFont.truetype("arial.ttf", 14)
 		self.flavorfont = ImageFont.truetype("ariali.ttf", 14)
 		
@@ -67,6 +69,17 @@ class Traits:
 				traitlist.append(trait)
 				
 		return traitlist
+		
+	def getmodlist(self, modlist):		
+		traitlist = []
+		if modlist:
+			for mod in modlist:
+				trait = self.gettrait(mod["trait"])
+				if trait:
+					trait.mod = mod["mod"]
+					traitlist.append(trait)
+					
+			return traitlist
 		
 g_traits = Traits()
 
@@ -172,17 +185,53 @@ class MonsterCard(Card):
 		self.draw.text((20,y+offset*0), "HP:  " + str(self.hp), Color.black, self.style.statsfont)
 		self.draw.text((20,y+offset*1), "ATK: " + str(self.attack), Color.black, self.style.statsfont)
 		self.draw.text((20,y+offset*2), "DEF: " + str(self.defense), Color.black, self.style.statsfont)	
+		
+	def drawstats(self):
+		y = 220
+		offset = 20
+		
+		atk_x = 60
+		hp_x = 200
+		def_x = 340
+		
+		lbl_y = 510
+		stat_y = 530
+		
+		atktext = str(self.attack)
+		deftext = str(self.defense)
+		hptext = str(self.hp)
+		
+		atktext_size = self.draw.textsize(atktext, self.style.statsfont)		
+		deftext_size = self.draw.textsize(deftext, self.style.statsfont)
+		hptext_size = self.draw.textsize(hptext, self.style.statsfont)
+		
+		atklbl = "ATK"		
+		deflbl = "DEF"
+		hplbl = "HP"
+
+		atklbl_size = self.draw.textsize(atklbl, self.style.statslabelfont)			
+		deflbl_size = self.draw.textsize(deflbl, self.style.statslabelfont)
+		hplbl_size = self.draw.textsize(hplbl, self.style.statslabelfont)
+		
+		self.draw.text((atk_x-atklbl_size[0]/2,lbl_y), atklbl, Color.black, self.style.statslabelfont)		
+		self.draw.text((def_x-deflbl_size[0]/2,lbl_y), deflbl, Color.black, self.style.statslabelfont)
+		self.draw.text((hp_x-hplbl_size[0]/2,lbl_y), hplbl, Color.black, self.style.statslabelfont)
+		
+		self.draw.text((atk_x-atktext_size[0]/2,stat_y), atktext, Color.black, self.style.statsfont)
+		self.draw.text((def_x-deftext_size[0]/2,stat_y), deftext, Color.black, self.style.statsfont)
+		self.draw.text((hp_x-deftext_size[0]/2,stat_y), hptext, Color.black, self.style.statsfont)
 	
 
 #=======================================
 class MoveCard(Card):
-	def __init__(self, guid, name, attack, defense, eattack, edefense, traits, effect, flavor):
+	def __init__(self, guid, name, attack, defense, eattack, edefense, traits, mods, effect, flavor):
 		Card.__init__(self,"move", guid, name)
 		self.attack 	= attack
 		self.defense 	= defense
 		self.eattack 	= eattack
 		self.edefense 	= edefense
 		self.traits		= g_traits.gettraitlist(traits)		
+		self.mods		= g_traits.getmodlist(mods)
 		self.effects	= effect
 		self.flavor		= flavor
 		self.isdrawn	= False
@@ -218,16 +267,60 @@ class MoveCard(Card):
 			text = enhtext
 		
 		return text
+		
+	def modtext(mods):
+		text = ""
+		
+		if mods:
+			for i in range(min(2,len(mods))):
+				mod = mods[i]
+				
+				if mod.mod >= 0:
+					text += "+" + str(mod.mod)
+				else:
+					text += str(mod.mod)
+				
+				text += " " + mod.name + "\n"
 			
+		return text
 		
 	def drawstats(self):
 		y = 220
 		offset = 20
+		
+		atk_x = 60
+		mod_x = 200
+		def_x = 340
+		
+		lbl_y = 510
+		stat_y = 530
+		mod_y = 534
+		
 		atktext = MoveCard.stattext(self.attack, self.eattack)
 		deftext = MoveCard.stattext(self.defense, self.edefense)
-				
-		self.draw.text((20,540), "ATK: " + atktext, Color.black, self.style.statsfont)
-		self.draw.text((200,540), "DEF: " + deftext, Color.black, self.style.statsfont)
+		modtext = MoveCard.modtext(self.mods)
+		
+		atktext_size = self.draw.textsize(atktext, self.style.statsfont)
+		deftext_size = self.draw.textsize(deftext, self.style.statsfont)
+		modtext_size = self.draw.textsize(modtext, self.style.modsfont)
+		
+		atklbl = "ATK"		
+		deflbl = "DEF"
+		modlbl = "MOD"
+
+		atklbl_size = self.draw.textsize(atklbl, self.style.statslabelfont)			
+		deflbl_size = self.draw.textsize(deflbl, self.style.statslabelfont)
+		modlbl_size = self.draw.textsize(modlbl, self.style.statslabelfont)
+		
+		self.draw.text((atk_x-atklbl_size[0]/2,lbl_y), atklbl, Color.black, self.style.statslabelfont)		
+		self.draw.text((def_x-deflbl_size[0]/2,lbl_y), deflbl, Color.black, self.style.statslabelfont)		
+		
+		self.draw.text((atk_x-atktext_size[0]/2,stat_y), atktext, Color.black, self.style.statsfont)
+		self.draw.text((def_x-deftext_size[0]/2,stat_y), deftext, Color.black, self.style.statsfont)
+		
+		if self.mods:
+			self.draw.text((mod_x-modlbl_size[0]/2,lbl_y), modlbl, Color.black, self.style.statslabelfont)
+			self.draw.text((mod_x-modtext_size[0]/2,mod_y), modtext, Color.black, self.style.modsfont)
 
 
 #=======================================
@@ -292,6 +385,7 @@ def createcard(carddef):
 			eattack	= carddef.get("eatk"),
 			edefense= carddef.get("edef"),
 			traits	= carddef["traits"],
+			mods    = carddef.get("mods"),
 			effect	= carddef.get("effect"),
 			flavor	= carddef.get("flavor")
 		)

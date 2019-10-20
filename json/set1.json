@@ -6,7 +6,7 @@
       "guid": "88495A7A245C469DAF0DEBFAE4BF56C3",
       "hp": 4,
       "atk": 5,
-      "def": 6,
+      "def": 7,
       "traits": [
         "claws",
         "thorns",
@@ -20,7 +20,7 @@
       "type": "monster",
       "guid": "C1FAA61C1A5444EABFF2712B25A0BFDD",
       "hp": 6,
-      "atk": 5,
+      "atk": 4,
       "def": 4,
       "traits": [
         "beak",
@@ -70,6 +70,9 @@
       "edef": 2,
       "traits": [
         "ice"
+      ],
+      "mods": [
+        {"mod": 2, "trait": "thunder"}
       ]
     },
     {
@@ -82,6 +85,10 @@
       "traits": [
         "ice",
         "ice"
+      ],
+      "mods": [
+        {"mod": 1, "trait": "thunder"},
+        {"mod": 2, "trait": "cloud"}
       ]
     },
     {
@@ -93,6 +100,10 @@
       "traits": [
         "thunder",
         "thunder"
+      ],
+      "mods": [
+        {"mod": 2, "trait": "water"},
+        {"mod": 2, "trait": "wind"}
       ]
     },
     {
@@ -113,6 +124,10 @@
       "traits": [
         "thunder",
         "any"
+      ],
+      "mods": [
+        {"mod": 2, "trait": "water"},
+        {"mod": 1, "trait": "wind"}
       ]
     },
     {
@@ -122,6 +137,10 @@
       "atk": 4,
       "traits": [
         "thunder"
+      ],
+      "mods": [
+        {"mod": 2, "trait": "water"},
+        {"mod": 2, "trait": "wind"}
       ]
     },
     {
@@ -132,6 +151,10 @@
       "traits": [
         "ice",
         "ice"
+      ],
+      "mods": [
+        {"mod": 2, "trait": "thunder"},
+        {"mod": 2, "trait": "cloud"}
       ]
     }
   ]

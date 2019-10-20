@@ -63,6 +63,23 @@
             { "type": "integer"}, 
             { "type": "null"   }
           ]},
+          "mods": { 
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "mod": { "type": "integer" },
+                "trait": {
+                  "type": "string",
+                  "enum":
+                  [
+                    "water","fire","wind","earth","cloud", "thunder", "sand","plant","ice","lava",
+                    "claws","thorns","spike","beak","fangs","wings","tail","shell","scales"
+                  ]
+                }
+              }
+            }
+          },
           "traits": {
             "type": "array",
             "minItems": 1,
