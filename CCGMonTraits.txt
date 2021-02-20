@@ -1,0 +1,16 @@
+LINK="1yL0C3ogMLj3jbDg_lfNIIcozkI3OQ1aX8b6koTJvgqw!Traits"
+
+INCLUDE = "TraitIcons.txt"
+
+VISUAL=, 10, 10
+FONT=Arial,20,,#000000
+;NAME
+TEXT="1-{(NAME)}",[NAME],13.774%,0%,84.848%,15.441%
+;COST
+ICONS="1-{(COST)}",[COST],1.653%,1.287%,12.948%,63.787%,12%,8%,0,PV,LEFT,TOP,100,3
+IMAGE="1-{(IMAGE)}",[IMAGE],14.325%,27.574%,75.207%,48.346%
+RECTANGLE=,0%,0%,100%,100%,#000000,EMPTY,0.2
+ENDVISUAL
+
+rectangle=70,0,0,100%,100%,#000000
+display="out/traits.png"
